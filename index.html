@@ -1,137 +1,211 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2709
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Open Me! ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        :root {
+            --pink: #ff85a1;
+            --soft-pink: #ffe5ec;
+            --dark-pink: #ff4d6d;
+            --button-blue: #3a86ff;
+            --dead-gray: #adb5bd;
+        }
 
-\f0\fs24 \cf0 <!DOCTYPE html>\
-<html lang="en">\
-<head>\
-    <meta charset="UTF-8">\
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
-    <title>Answer Carefully... \uc0\u10084 \u65039 </title>\
-    <style>\
-        body \{\
-            background-color: #ffe4e1;\
-            display: flex;\
-            flex-direction: column;\
-            align-items: center;\
-            justify-content: center;\
-            height: 100vh;\
-            margin: 0;\
-            font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;\
-            text-align: center;\
-            overflow: hidden;\
-        \}\
-\
-        .container \{\
-            background: white;\
-            padding: 30px;\
-            border-radius: 20px;\
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);\
-            max-width: 450px;\
-            margin: 20px;\
-        \}\
-\
-        h1 \{ color: #ff4d6d; font-size: 1.8rem; line-height: 1.4; \}\
-        \
-        .gif-container img \{ width: 180px; border-radius: 15px; margin-bottom: 20px; \}\
-\
-        .buttons \{\
-            display: flex;\
-            gap: 15px;\
-            justify-content: center;\
-            align-items: center;\
-            margin-top: 20px;\
-            flex-wrap: wrap;\
-        \}\
-\
-        button \{\
-            padding: 15px 25px;\
-            font-size: 1.1rem;\
-            border: none;\
-            border-radius: 12px;\
-            cursor: pointer;\
-            transition: all 0.2s ease-in-out;\
-            font-weight: bold;\
-        \}\
-\
-        #yesBtn \{ background-color: #ff4d6d; color: white; box-shadow: 0 4px 0 #d63350; \}\
-        #yesBtn:active \{ transform: translateY(4px); box-shadow: none; \}\
-\
-        #noBtn \{ background-color: #adb5bd; color: white; \}\
-\
-        .hidden \{ display: none; \}\
-    </style>\
-</head>\
-<body>\
-\
-    <div id="main-card" class="container">\
-        <div class="gif-container">\
-            <img id="display-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueG93bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpNUMo/giphy.gif" alt="Cute gif">\
-        </div>\
-        <h1 id="question">Will you be my Valentine? \uc0\u55357 \u56470 </h1>\
-        \
-        <div class="buttons">\
-            <button id="yesBtn">Yes!</button>\
-            <button id="noBtn">Yeah nah</button>\
-        </div>\
-    </div>\
-\
-    <div id="success-card" class="container hidden">\
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueG93bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/KztT2c4u8mYYUiMKdJ/giphy.gif" alt="Happy gif" width="180">\
-        <h1>Knew you would say yes! \uc0\u55358 \u56688 </h1>\
-        <p>Marley and Lilah are happy too!</p>\
-    </div>\
-\
-    <script>\
-        const yesBtn = document.getElementById('yesBtn');\
-        const noBtn = document.getElementById('noBtn');\
-        const mainCard = document.getElementById('main-card');\
-        const successCard = document.getElementById('success-card');\
-\
-        let noCount = 0;\
-        \
-        // These are your personalized responses!\
-        const phrases = [\
-            "Yeah nah",\
-            "Even after I got you your ball holder?",\
-            "Are Marley and Lilah okay with this answer?",\
-            "Think about the dogs...",\
-            "Wow. Rude.",\
-            "Try clicking the red one maybe?",\
-            "I'm actually gonna cry",\
-            "Are you being fr right now?",\
-            "Look at the Yes button. It's so big and pretty.",\
-            "Last chance to take it back!",\
-            "Okay fine, be like that.",\
-            "Just kidding, you have no choice."\
-        ];\
-\
-        noBtn.addEventListener('click', () => \{\
-            noCount++;\
-            \
-            // Update the text to your cheeky phrases\
-            if (noCount < phrases.length) \{\
-                noBtn.innerText = phrases[noCount];\
-            \}\
-            \
-            // Make the "Yes" button aggressively larger\
-            const currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);\
-            yesBtn.style.fontSize = (currentSize * 1.4) + "px";\
-            yesBtn.style.padding = (currentSize * 0.8) + "px " + (currentSize * 1.5) + "px";\
-\
-            // When we run out of phrases, the "Yeah nah" button disappears\
-            if (noCount >= phrases.length - 1) \{\
-                noBtn.style.display = 'none';\
-            \}\
-        \});\
-\
-        yesBtn.addEventListener('click', () => \{\
-            mainCard.classList.add('hidden');\
-            successCard.classList.remove('hidden');\
-        \});\
-    </script>\
-</body>\
-</html>}
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
+        body {
+            background-color: var(--soft-pink);
+            margin: 0; padding: 0;
+            width: 100vw; height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Fredoka', sans-serif; 
+            overflow: hidden; position: fixed;
+        }
+
+        .bg-heart {
+            position: absolute; color: var(--pink); opacity: 0.3;
+            animation: float 5s infinite linear; z-index: 1; pointer-events: none;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(110vh); }
+            100% { transform: translateY(-10vh); }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px 20px; border-radius: 35px;
+            box-shadow: 0 15px 30px rgba(255, 77, 109, 0.2);
+            text-align: center; z-index: 99;
+            width: 90%; max-width: 400px;
+            border: 5px dashed var(--pink);
+            position: relative;
+        }
+
+        .extravaganza {
+            width: 95% !important;
+            max-width: 450px !important;
+            animation: pulseCard 1s infinite alternate, glow 2s infinite;
+        }
+
+        .success-photo-wrapper {
+            position: relative;
+            width: 100%; border-radius: 25px;
+            overflow: hidden; border: 6px solid white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .success-photo-wrapper img { width: 100%; height: auto; display: block; }
+
+        .overlay-text {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            color: white; font-weight: 700; font-size: 1.6rem;
+            background: linear-gradient(transparent, rgba(255, 77, 109, 0.8));
+            padding: 30px 10px 15px 10px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            pointer-events: none; animation: textPulse 1.5s infinite ease-in-out; z-index: 100;
+        }
+
+        @keyframes textPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+        @keyframes pulseCard { from { transform: scale(1); } to { transform: scale(1.03); } }
+        @keyframes glow { 0% { box-shadow: 0 0 20px #ff4d6d; } 50% { box-shadow: 0 0 40px #ff85a1, 0 0 60px #ff4d6d; } 100% { box-shadow: 0 0 20px #ff4d6d; } }
+
+        .photo-container {
+            width: 100%; height: 230px;
+            display: flex; justify-content: center; align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .photo-container img {
+            max-width: 100%; max-height: 100%;
+            border-radius: 20px; border: 4px solid white; object-fit: contain;
+        }
+
+        h1 { color: var(--dark-pink); font-size: 2.2rem; margin: 10px 0; font-weight: 700; }
+        .buttons { display: flex; flex-direction: column; gap: 12px; }
+        
+        button {
+            padding: 16px; font-size: 1.6rem; border: none;
+            border-radius: 50px; cursor: pointer;
+            font-family: 'Fredoka', sans-serif; font-weight: 600;
+            width: 100%; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+
+        #yesBtn { background-color: var(--dark-pink); color: white; }
+        #noBtn { background-color: var(--button-blue); color: white; }
+        .dead { background-color: var(--dead-gray) !important; color: #ffffff !important; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <div id="main-card" class="container">
+        <div class="photo-container">
+            <img id="main-media" src="IMG_8452.jpg">
+        </div>
+        <h1 id="main-question">Will you be my Valentine?</h1>
+        <div class="buttons">
+            <button id="yesBtn" type="button">Yes</button>
+            <button id="noBtn" type="button">Yeah nah</button>
+        </div>
+    </div>
+
+    <div id="success-card" class="container hidden">
+        <div class="success-photo-wrapper">
+            <img src="IMG_3562.jpg">
+            <div class="overlay-text">I KNEW YOU WOULD SAY YES!</div>
+        </div>
+        <h1 style="margin-top: 20px; font-size: 2.8rem; color: #ff4d6d;">FINALLY! 🥰</h1>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+            const mainMedia = document.getElementById('main-media');
+            const mainCard = document.getElementById('main-card');
+            const successCard = document.getElementById('success-card');
+
+            const pages = [
+                { yes: "Yes!!", no: "Even after I got you your ball holder?", img: "b.JPG" },
+                { yes: "Why aren't you clicking yes??", no: "Are you actually fr?", img: "kl.JPG" },
+                { yes: "Yes", no: "I'm gonna be so sad...", img: "ss.JPG" },
+                { yes: "YES", no: "Look how big the yes button is!", img: "a.JPG" },
+                { yes: "Of course yes", no: "You're breaking my heart!", img: "thumb.JPG" },
+                { yes: "Omg yes", no: "You're just being mean now", img: "s.JPG" }
+            ];
+
+            let currentStep = 0;
+            let finalMode = false;
+
+            function fireConfetti() {
+                const duration = 15 * 1000;
+                const animationEnd = Date.now() + duration;
+                const interval = setInterval(function() {
+                    const timeLeft = animationEnd - Date.now();
+                    if (timeLeft <= 0) return clearInterval(interval);
+                    confetti({ particleCount: 45, spread: 360, origin: { x: Math.random(), y: Math.random() - 0.2 }, colors: ['#ff4d6d', '#ff85a1', '#ffffff', '#3a86ff'] });
+                }, 250);
+            }
+
+            yesBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (finalMode) {
+                    mainCard.classList.add('hidden');
+                    successCard.classList.remove('hidden');
+                    successCard.classList.add('extravaganza');
+                    fireConfetti();
+                } else {
+                    yesBtn.classList.add('dead');
+                }
+            });
+
+            noBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                yesBtn.classList.remove('dead');
+                if (currentStep < pages.length) {
+                    const p = pages[currentStep];
+                    yesBtn.innerText = p.yes;
+                    noBtn.innerText = p.no;
+                    mainMedia.src = p.img;
+
+                    // SPECIAL GROWTH FOR THE "BIG YES" PAGE
+                    if (p.img === "a.JPG") {
+                        yesBtn.style.fontSize = "3.5rem";
+                        yesBtn.style.padding = "30px";
+                        noBtn.style.fontSize = "1rem";
+                        noBtn.style.padding = "8px";
+                    } else {
+                        // Regular growth for other pages
+                        let currentF = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+                        if (currentF < 60) yesBtn.style.fontSize = (currentF + 5) + "px";
+                        noBtn.style.fontSize = "1.5rem";
+                        noBtn.style.padding = "16px";
+                    }
+                    currentStep++;
+                } else {
+                    noBtn.classList.add('hidden');
+                    yesBtn.innerText = "OKAY YES FOR REAL! ❤️";
+                    yesBtn.style.backgroundColor = "#28a745";
+                    yesBtn.style.fontSize = "2.1rem";
+                    yesBtn.style.padding = "20px";
+                    mainMedia.src = "ah.JPG";
+                    finalMode = true;
+                }
+            });
+
+            for (let i = 0; i < 12; i++) {
+                let h = document.createElement('div');
+                h.className = 'bg-heart'; h.innerHTML = '❤️';
+                h.style.left = Math.random() * 100 + 'vw';
+                h.style.top = '-20px'; h.style.animationDelay = Math.random() * 5 + 's';
+                document.body.appendChild(h);
+            }
+        });
+    </script>
+</body>
+</html>
