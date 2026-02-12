@@ -139,6 +139,14 @@
                 { yes: "Omg yes", no: "You're just being mean now", img: "s.JPG" }
             ];
 
+            // --- PRELOAD SCRIPT START ---
+            const allImages = ["b.JPG", "kl.JPG", "ss.JPG", "a.JPG", "thumb.JPG", "s.JPG", "ah.JPG", "IMG_3562.jpg"];
+            allImages.forEach((src) => {
+                const img = new Image();
+                img.src = src;
+            });
+            // --- PRELOAD SCRIPT END ---
+
             let currentStep = 0;
             let finalMode = false;
 
@@ -173,14 +181,12 @@
                     noBtn.innerText = p.no;
                     mainMedia.src = p.img;
 
-                    // SPECIAL GROWTH FOR THE "BIG YES" PAGE
                     if (p.img === "a.JPG") {
                         yesBtn.style.fontSize = "3.5rem";
                         yesBtn.style.padding = "30px";
                         noBtn.style.fontSize = "1rem";
                         noBtn.style.padding = "8px";
                     } else {
-                        // Regular growth for other pages
                         let currentF = parseFloat(window.getComputedStyle(yesBtn).fontSize);
                         if (currentF < 60) yesBtn.style.fontSize = (currentF + 5) + "px";
                         noBtn.style.fontSize = "1.5rem";
